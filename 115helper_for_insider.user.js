@@ -11,6 +11,7 @@
 // @grant       GM_getValue
 // @grant       GM_setValue
 // @grant       GM_openInTab
+// @grant       GM_notification
 // @run-at      document-end
 // ==/UserScript==
 
@@ -26,31 +27,6 @@ var lxURL = 'http://115.com/web/lixian/?ct=lixian&ac=add_task_url'; //添加115�
 var logininfo_url = "http://web.api.115.com/files"; //获取登陆态接口
 var X_userID = 0; //默认115用户ID
 GM_setValue('X_userID', X_userID);
-
-//验证115登陆态. 并获取user_id
-if (X_userID == '0') {
-    
-    GM_xmlhttpRequest({
-        method: 'GET',
-        url: logininfo_url + "?aid=1&cid=0&o=user_ptime&asc=0&offset=0&show_dir=1&limit=115&code=&scid=&snap=0&natsort=1&source=&format=json",
-        onload: function (responseDetails)
-        {
-            var lxRs = JSON.parse(responseDetails.responseText); //登陆状态结果
-            console.log(lxRs);
-            if (lxRs.state) {
-                //已登陆
-                uid = lxRs.uid;
-                GM_setValue(X_userID, uid);
-                console.log('老司机自动开车-115离线助手 已登陆115, uid:'+uid);
-            } else {
-                //未登陆
-                console.log('老司机自动开车-115离线助手 未登陆115');
-                return nologin();
-            }
-        }
-    });
-    
-}
 
 
 //未登陆115处理方法
@@ -70,6 +46,18 @@ function nologin()
 function notifiy(title, body, icon, click_url)
 {
 
+    var notificationDetails = {
+        text: body,
+        title: title,
+        timeout: 10000,
+        image: icon,
+        onclick: function() { 
+            window.open(click_url);
+        }
+    };
+    GM_notification(notificationDetails);
+
+    /*
     var notification = new Notification(title,{
         body : body,
         icon :icon,
@@ -86,6 +74,7 @@ function notifiy(title, body, icon, click_url)
     notification.onclick = function () {
         window.open(click_url);
     };
+    */
 
 
 }
@@ -101,7 +90,7 @@ function LXTo115(url)
                 //未登录处理
                 return nologin();
             }
-            X_userID = GM_getValue('X_userID');
+            X_userID = GM_getValue('X_userID', 0);
             var sign115 = JSON.parse(responseDetails.response).sign;
             var time115 = JSON.parse(responseDetails.response).time;
             downTo115(url, X_userID, sign115, time115);
@@ -141,20 +130,49 @@ function downTo115(url, X_userID, sign115, time115) {
 
 }
 
-//magnet判断
-var magnets = $("body").html().match(/magnet:\?xt=urn:btih:[0-9a-zA-Z]{40}/g);
-if(!magnets)
-{
-    console.log("页面无发现磁链");
-    return false;
+//验证115登陆态. 并获取user_id
+if (X_userID == '0') {
+
+    GM_xmlhttpRequest({
+        method: 'GET',
+        url: logininfo_url + "?aid=1&cid=0&o=user_ptime&asc=0&offset=0&show_dir=1&limit=115&code=&scid=&snap=0&natsort=1&source=&format=json",
+        onload: function (responseDetails)
+        {
+            var lxRs = JSON.parse(responseDetails.responseText); //登陆状态结果
+            console.log(lxRs);
+            if (lxRs.state) {
+                //已登陆
+                uid = lxRs.uid;
+                GM_setValue('X_userID', uid);
+                console.log('老司机自动开车-115离线助手 已登陆115, uid:'+uid);
+
+
+                //magnet判断
+                var magnets = $("body").html().match(/magnet:\?xt=urn:btih:[0-9a-zA-Z]{40}/g);
+                if(!magnets)
+                {
+                    console.log("页面无发现磁链");
+                    return false;
+                }
+
+                $.each(magnets, function(i, n){
+                    var magnet = n;
+                    console.log("发现磁链:"+magnet);
+                    LXTo115(magnet);
+
+                });
+            } else {
+                //未登陆
+                console.log('老司机自动开车-115离线助手 未登陆115');
+                return nologin();
+            }
+        }
+    });
+
 }
 
-$.each(magnets, function(i, n){
-    var magnet = n;
-    console.log("发现磁链:"+magnet);
-    LXTo115(magnet);
 
-});
+
 
 
 
