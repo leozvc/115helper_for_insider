@@ -101,6 +101,7 @@ function LXTo115(url)
                 //未登录处理
                 return nologin();
             }
+            X_userID = GM_getValue('X_userID');
             var sign115 = JSON.parse(responseDetails.response).sign;
             var time115 = JSON.parse(responseDetails.response).time;
             downTo115(url, X_userID, sign115, time115);
