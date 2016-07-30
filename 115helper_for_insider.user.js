@@ -6,7 +6,7 @@
 // @description  老司机自动开车-115离线助手, 自动抓取页面磁链同步至115离线
 // @author       insider
 // @require      http://libs.baidu.com/jquery/2.0.0/jquery.min.js
-// @require      http://apps.bdimg.com/libs/jquery.cookie/1.4.1/jquery.cookie.js
+// @require      //cdn.bootcss.com/jquery-cookie/1.4.1/jquery.cookie.min.js
 // @resource     icon1 http://geekdream.com/image/115helper_icon_001.jpg
 // @match        http*://*/*
 // @grant       GM_xmlhttpRequest
