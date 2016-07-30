@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         老司机自动开车-115离线助手
 // @namespace    115helper.for.insider
-// @version      1.1.1
+// @version      1.1.2
 // @supportURL   https://github.com/leozvc/115helper_for_insider/issues
 // @description  老司机自动开车-115离线助手, 自动抓取页面磁链同步至115离线
 // @author       insider
@@ -16,6 +16,7 @@
 // @grant       GM_notification
 // @grant       GM_getResourceURL
 // @run-at      document-end
+// @noframes
 // ==/UserScript==
 
 var notification_url = ''; //chrome桌面通知默认点击跳转地址
@@ -26,7 +27,7 @@ var X_userID = 0; //默认115用户ID
 //icon图标
 var icon = GM_getResourceURL('icon1');
 
-
+console.log(location);
 //方法: 初始化方法
 function _init()
 {
