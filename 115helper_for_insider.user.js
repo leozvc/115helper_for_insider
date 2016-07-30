@@ -27,7 +27,6 @@ var X_userID = 0; //默认115用户ID
 //icon图标
 var icon = GM_getResourceURL('icon1');
 
-console.log(location);
 //方法: 初始化方法
 function _init()
 {
