@@ -1,12 +1,12 @@
 // ==UserScript==
 // @name         老司机自动开车-115离线助手
 // @namespace    115helper.for.insider
-// @version      1.1
+// @version      1.1.1
 // @supportURL   https://github.com/leozvc/115helper_for_insider/issues
 // @description  老司机自动开车-115离线助手, 自动抓取页面磁链同步至115离线
 // @author       insider
 // @require      http://libs.baidu.com/jquery/2.0.0/jquery.min.js
-// @require      //cdn.bootcss.com/jquery-cookie/1.4.1/jquery.cookie.min.js
+// @require      http://cdn.bootcss.com/jquery-cookie/1.4.1/jquery.cookie.min.js
 // @resource     icon1 http://geekdream.com/image/115helper_icon_001.jpg
 // @match        http*://*/*
 // @grant       GM_xmlhttpRequest
