@@ -93,6 +93,8 @@ function _init()
         Modal3.show();
         Modal3.setHeigth("400px");
         Modal3.setWidth("900px");
+        Modal3.setTitle("老司机自动开车 V1.1.5");
+
     });
 
     //点击 下载到115 按钮
