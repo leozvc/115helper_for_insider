@@ -51,7 +51,7 @@ function _init()
 
     if (c_m || c_e)
     {
-        down_btn = '<a type="button" id="down_btn"  data-reveal-id="links" data-animation="fade" class="btn btn-primary btn-lg" style="border: 1px solid #D4CD49; position:fixed;left:0;top:30%">发现磁链 马上下载!</button>';
+        down_btn = '<a type="button" id="down_btn"  data-reveal-id="links" data-animation="fade" class="btn btn-primary btn-lg" style="border: 1px solid #D4CD49; position:fixed;left:0;top:30%;box-shadow: rgb(230, 122, 115) 0px 39px 0px -24px inset; background-color: rgb(228, 104, 93); border-radius: 4px; border: 1px solid rgb(255, 255, 255); display: inline-block; cursor: pointer; color: rgb(255, 255, 255); font-family: Arial; font-size: 15px; padding: 6px 15px; text-decoration: none; text-shadow: rgb(178, 62, 53) 0px 1px 0px;">发现磁链 马上下载!</button>';
         $("body").append(down_btn);
     }
 
@@ -187,7 +187,7 @@ function LXTo115(url)
 //方法 添加到面板
 function addToboard(url)
 {
-    html = '<tr><td ><form class="bs-example bs-example-form" ><div class="input-group"><input class="link_url input-block-level span8" type="text" value="'+url+'" style="width:500px"></div></form></td><td><div class="btn-group"><button type="button" class="btn btn-primary download_to_115"  data-complete-text="传输成功">下载到115</button><button type="button" class="btn btn-primary copy_magnetlink"  data-complete-text="复制成功">复制到粘贴板</button></div></td></tr>';
+    html = '<tr><td ><form class="bs-example bs-example-form" ><div class="input-group"><input class="link_url input-block-level span8" type="text" value="'+url+'" style="width:500px"></div></form></td><td><div class="btn-group"><button type="button" class="btn btn-primary download_to_115" style="box-shadow: rgb(230, 122, 115) 0px 39px 0px -24px inset; background-color: rgb(228, 104, 93); border-radius: 4px; border: 1px solid rgb(255, 255, 255); display: inline-block; cursor: pointer; color: rgb(255, 255, 255); font-family: Arial; font-size: 15px; padding: 6px 15px; text-decoration: none; text-shadow: rgb(178, 62, 53) 0px 1px 0px;">下载到115</button><button type="button" class="btn btn-primary copy_magnetlink" style="box-shadow: rgb(230, 122, 115) 0px 39px 0px -24px inset; background-color: rgb(228, 104, 93); border-radius: 4px; border: 1px solid rgb(255, 255, 255); display: inline-block; cursor: pointer; color: rgb(255, 255, 255); font-family: Arial; font-size: 15px; padding: 6px 15px; text-decoration: none; text-shadow: rgb(178, 62, 53) 0px 1px 0px;">复制到粘贴板</button></div></td></tr>';
 
     $("#links tbody").append(html);
 
