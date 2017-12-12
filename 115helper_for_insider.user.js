@@ -1,7 +1,7 @@
 // ==UserScript==
-// @name         老司机自动开车 V1.1.5
+// @name         老司机自动开车 V1.1.6
 // @namespace    115helper.for.insider
-// @version      1.1.5
+// @version      1.1.6
 // @supportURL   https://github.com/leozvc/115helper_for_insider/issues
 // @description  老司机自动开车-115离线助手, 自动抓取页面磁链同步至115离线
 // @author       insider
@@ -45,7 +45,6 @@ var icon = GM_getResourceURL('icon1');
         Modal3.renderto = "#modal3";
         Modal3.InitShow = true;
         Modal3.btns = [{ id: "closebtn", text: "关闭"  }];
-        Modal3.setTitle = "老司机自动开车 V1.1.5";
         tab1 = new Tab();
 
         table_htmls = '<div class="table table-striped" id="links"><table class="table"><thead><tr><th class="col-5" style="word-break:break-all;word-wrap:break-all">磁链</th><th class="col-4">操作</th></tr></thead><tbody></tbody></table></div>';
