@@ -32,7 +32,7 @@ var icon = GM_getResourceURL('icon1');
 
 
   function InitModal() {
-        table_htmls = '<div id="links" style=" visibility: hidden; top: 150px; left: 50%; margin-left: -300px; width: 900px; position: absolute; z-index: 101; padding: 30px 40px 34px; -moz-border-radius: 5px; -webkit-border-radius: 5px; border-radius: 5px; -moz-box-shadow: 0 0 10px rgba(0,0,0,.4); -webkit-box-shadow: 0 0 10px rgba(0,0,0,.4); -box-shadow: 0 0 10px rgba(0,0,0,.4); background-color: #FFF; "><table class="table"><thead><tr><th style="word-break:break-all;word-wrap:break-all">磁链</th><th class="col-4">操作</th></tr></thead><tbody></tbody></table><a style=" font-size: 22px; line-height: 0.5; position: absolute; top: 8px; right: 11px; color: #333; text-shadow: 0 -1px 1px rbga(0,0,0,.6); font-weight: bold; cursor: pointer;" class="close-reveal-modal">&#215;</a></div>';
+        table_htmls = '<div id="links" style=" visibility: hidden; top: 150px; left: 50%; margin-left: -500px; width: 900px; position: absolute; z-index: 101; padding: 30px 40px 34px; -moz-border-radius: 5px; -webkit-border-radius: 5px; border-radius: 5px; -moz-box-shadow: 0 0 10px rgba(0,0,0,.4); -webkit-box-shadow: 0 0 10px rgba(0,0,0,.4); -box-shadow: 0 0 10px rgba(0,0,0,.4); background-color: #FFF; "><table class="table"><thead><tr><th style="word-break:break-all;word-wrap:break-all">磁链</th><th class="col-4">操作</th></tr></thead><tbody></tbody></table><a style=" font-size: 22px; line-height: 0.5; position: absolute; top: 8px; right: 11px; color: #333; text-shadow: 0 -1px 1px rbga(0,0,0,.6); font-weight: bold; cursor: pointer;" class="close-reveal-modal">&#215;</a></div>';
         $(document.body).append(table_htmls);
   }
 
