@@ -44,8 +44,8 @@ var icon = GM_getResourceURL('icon1');
         Modal3 = new Modal();
         Modal3.renderto = "#modal3";
         Modal3.InitShow = true;
-        Modal3.btns = [{ id: "closebtn", text: "关闭"  }]
-        Modal3.setTitle = "老司机自动开车 V1.1.5"
+        Modal3.btns = [{ id: "closebtn", text: "关闭"  }];
+        Modal3.setTitle = "老司机自动开车 V1.1.5";
         tab1 = new Tab();
 
         table_htmls = '<div class="table table-striped" id="links"><table class="table"><thead><tr><th class="col-5" style="word-break:break-all;word-wrap:break-all">磁链</th><th class="col-4">操作</th></tr></thead><tbody></tbody></table></div>';
@@ -58,7 +58,7 @@ var icon = GM_getResourceURL('icon1');
             }];
             tab1.renderto = thismodal.body;
             tab1.Init();
-        }
+        };
     }
 
 
@@ -93,7 +93,7 @@ function _init()
         Modal3.show();
         Modal3.setHeigth("400px");
         Modal3.setWidth("900px");
-    })
+    });
 
     //点击 下载到115 按钮
     $(".download_to_115").click(function(){
