@@ -12,7 +12,7 @@
 // @resource      bootstrapCSS http://apps.bdimg.com/libs/bootstrap/3.3.4/css/bootstrap.css
 // @resource      bootstrapExCSS   http://geekdream.com/bootstrapEx.css
 // @resource     icon1 http://geekdream.com/image/115helper_icon_001.jpg
-// @match       http://www.zhaonima.com/*
+// @match       http*://*/*
 // @grant       GM_xmlhttpRequest
 // @grant       GM_addStyle
 // @grant       GM_getResourceText
