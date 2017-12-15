@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         老司机自动开车神器
 // @namespace    115helper.for.insider
-// @version      1.2.2
+// @version      1.2.3
 // @supportURL   https://github.com/leozvc/115helper_for_insider/issues
 // @description  老司机自动开车神器, 自动抓取识别磁链特征码,支持下载到115网盘
 // @author       insider
@@ -234,7 +234,7 @@ function check_codes()
             var code = n;
             GM_xmlhttpRequest({
                 method: 'GET',
-                url: "http://www.zhaonima.com/magnet/"+code+".html",
+                url: "http://www.btrabbit.cc/search/"+code+".html",
                 onload: function (responseDetails)
                 {
                     var responseData = responseDetails.response;
