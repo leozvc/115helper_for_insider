@@ -1,9 +1,9 @@
 // ==UserScript==
 // @name         老司机自动开车神器
 // @namespace    115helper.for.insider
-// @version      1.2.0 
+// @version      1.2.1
 // @supportURL   https://github.com/leozvc/115helper_for_insider/issues
-// @description  老司机自动开车神器, 自动抓取识别番号,磁链特征码 自动查找番号磁链 支持下载到115网盘/复制
+// @description  老司机自动开车神器, 自动抓取识别磁链特征码,支持下载到115网盘
 // @author       insider
 // @require      http://libs.baidu.com/jquery/1.4.4/jquery.min.js
 // @require      http://cdn.bootcss.com/jquery-cookie/1.4.1/jquery.cookie.min.js
@@ -226,22 +226,24 @@ function downTo115(url, X_userID, sign115, time115) {
 //番号检测
 function check_codes()
 {
-    var code = $("body").text().match(/[a-zA-Z]{2,8}-[0-9]{2,8}/g);
+    var codes = $("body").text().match(/[a-zA-Z]{2,8}-[0-9]{2,8}/g);
     have = false;
-    if(code)
+    if(codes)
     {
+        $.each(codes, function(i, n){
+            var code = n;
+            GM_xmlhttpRequest({
+                method: 'GET',
+                url: "http://www.zhaonima.com/magnet/"+code+".html",
+                onload: function (responseDetails)
+                {
+                    var responseData = responseDetails.response;
+                    var magnet = responseData.match(/[0-9a-zA-Z]{40,}/);
+                    console.log("番号对应magnet磁链: magnet:?xt=urn:btih:"+magnet);
+                    addToboard("magnet:?xt=urn:btih:"+ magnet, code);
 
-        GM_xmlhttpRequest({
-            method: 'GET',
-            url: "http://www.zhaonima.com/magnet/"+code+".html",
-            onload: function (responseDetails)
-            {
-                var responseData = responseDetails.response;
-                var magnet = responseData.match(/[0-9a-zA-Z]{40,}/);
-                console.log("番号对应magnet磁链: magnet:?xt=urn:btih:"+magnet);
-                addToboard("magnet:?xt=urn:btih:"+ magnet, code);
-
-            }
+                }
+            });
         });
 
         have = true;
