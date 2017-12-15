@@ -1,9 +1,9 @@
 // ==UserScript==
-// @name         老司机自动开车 V1.1.7
+// @name         老司机自动开车神器
 // @namespace    115helper.for.insider
-// @version      1.1.7
+// @version      1.1.9
 // @supportURL   https://github.com/leozvc/115helper_for_insider/issues
-// @description  老司机自动开车-115离线助手, 自动抓取页面磁链同步至115离线
+// @description  老司机自动开车神器, 自动抓取识别磁链特征码,支持下载到115网盘
 // @author       insider
 // @require      http://libs.baidu.com/jquery/1.4.4/jquery.min.js
 // @require      http://cdn.bootcss.com/jquery-cookie/1.4.1/jquery.cookie.min.js
@@ -32,7 +32,7 @@ var icon = GM_getResourceURL('icon1');
 
 
   function InitModal() {
-        table_htmls = '<div id="links" style=" visibility: hidden; top: 150px; left: 50%; margin-left: -500px; width: 900px; position: absolute; z-index: 101; padding: 30px 40px 34px; -moz-border-radius: 5px; -webkit-border-radius: 5px; border-radius: 5px; -moz-box-shadow: 0 0 10px rgba(0,0,0,.4); -webkit-box-shadow: 0 0 10px rgba(0,0,0,.4); -box-shadow: 0 0 10px rgba(0,0,0,.4); background-color: #FFF; "><table class="table"><thead><tr><th style="word-break:break-all;word-wrap:break-all">磁链</th><th class="col-4">操作</th></tr></thead><tbody></tbody></table><a style=" font-size: 22px; line-height: 0.5; position: absolute; top: 8px; right: 11px; color: #333; text-shadow: 0 -1px 1px rbga(0,0,0,.6); font-weight: bold; cursor: pointer;" class="close-reveal-modal">&#215;</a></div>';
+        table_htmls = '<div id="links" style="font-size:12px; visibility: hidden; top: 150px; left: 50%; margin-left: -250px; width: 700px; position: absolute; z-index: 101; padding: 30px 40px 34px; -moz-border-radius: 5px; -webkit-border-radius: 5px; border-radius: 5px; -moz-box-shadow: 0 0 10px rgba(0,0,0,.4); -webkit-box-shadow: 0 0 10px rgba(0,0,0,.4); -box-shadow: 0 0 10px rgba(0,0,0,.4); background-color: #FFF; "><table class="table"><thead><tr><th style="word-break:break-all;word-wrap:break-all">磁链</th><th class="col-4">操作</th></tr></thead><tbody></tbody></table><a style=" font-size: 12px; line-height: 0.5; position: absolute; top: 8px; right: 11px; color: #333; text-shadow: 0 -1px 1px rbga(0,0,0,.6); font-weight: bold; cursor: pointer;" class="close-reveal-modal">&#215;</a></div>';
         $(document.body).append(table_htmls);
   }
 
@@ -51,7 +51,7 @@ function _init()
 
     if (c_m || c_e)
     {
-        down_btn = '<a type="button" id="down_btn"  data-reveal-id="links" data-animation="fade" class="btn btn-primary btn-lg" style="border: 1px solid #D4CD49; position:fixed;left:0;top:30%;box-shadow: rgb(230, 122, 115) 0px 39px 0px -24px inset; background-color: rgb(228, 104, 93); border-radius: 4px; border: 1px solid rgb(255, 255, 255); display: inline-block; cursor: pointer; color: rgb(255, 255, 255); font-family: Arial; font-size: 15px; padding: 6px 15px; text-decoration: none; text-shadow: rgb(178, 62, 53) 0px 1px 0px;">发现磁链 马上下载!</button>';
+        down_btn = '<a type="button" id="down_btn"  data-reveal-id="links" data-animation="fade" class="btn btn-primary btn-lg" style="border: 1px solid #D4CD49; position:fixed;left:0;top:30%;box-shadow: rgb(230, 122, 115) 0px 39px 0px -24px inset; background-color: rgb(228, 104, 93); border-radius: 4px; border: 1px solid rgb(255, 255, 255); display: inline-block; cursor: pointer; color: rgb(255, 255, 255); font-family: Arial; font-size: 12px; padding: 6px 15px; text-decoration: none; text-shadow: rgb(178, 62, 53) 0px 1px 0px;">发现可疑磁链或番号 点击下载!</button>';
         $("body").append(down_btn);
     }
 
@@ -68,15 +68,16 @@ function _init()
     $(".download_to_115").click(function(){
 
         link = $(this).parents("tr").find(".link_url").val();
-        LXTo115(link);
+        a = LXTo115(link);
+        $(this).text("已同步115");
     });
 
     //点击 复制到粘贴板 按钮
     $(".copy_magnetlink").click(function(){
 
-
         link = $(this).parents("tr").find(".link_url");
         copy_link(link);
+        $(this).text("成功复制链接");
     });
 
 
@@ -187,7 +188,7 @@ function LXTo115(url)
 //方法 添加到面板
 function addToboard(url)
 {
-    html = '<tr><td ><form class="bs-example bs-example-form" ><div class="input-group"><input class="link_url input-block-level span8" type="text" value="'+url+'" style="width:500px"></div></form></td><td><div class="btn-group"><button type="button" class="btn btn-primary download_to_115" style="box-shadow: rgb(230, 122, 115) 0px 39px 0px -24px inset; background-color: rgb(228, 104, 93); border-radius: 4px; border: 1px solid rgb(255, 255, 255); display: inline-block; cursor: pointer; color: rgb(255, 255, 255); font-family: Arial; font-size: 15px; padding: 6px 15px; text-decoration: none; text-shadow: rgb(178, 62, 53) 0px 1px 0px;">下载到115</button><button type="button" class="btn btn-primary copy_magnetlink" style="box-shadow: rgb(230, 122, 115) 0px 39px 0px -24px inset; background-color: rgb(228, 104, 93); border-radius: 4px; border: 1px solid rgb(255, 255, 255); display: inline-block; cursor: pointer; color: rgb(255, 255, 255); font-family: Arial; font-size: 15px; padding: 6px 15px; text-decoration: none; text-shadow: rgb(178, 62, 53) 0px 1px 0px;">复制到粘贴板</button></div></td></tr>';
+    html = '<tr><td ><form class="bs-example bs-example-form" ><div class="input-group"><input class="link_url input-block-level span8" type="text" value="'+url+'" style="width:500px"></div></form></td><td><div class="btn-group"><button type="button" class="btn btn-primary download_to_115" style="box-shadow: rgb(230, 122, 115) 0px 39px 0px -24px inset; background-color: rgb(228, 104, 93); border-radius: 4px; border: 1px solid rgb(255, 255, 255); display: inline-block; cursor: pointer; color: rgb(255, 255, 255); font-family: Arial; font-size: 12px; padding: 6px 15px; text-decoration: none; text-shadow: rgb(178, 62, 53) 0px 1px 0px;">下载到115</button><button type="button" class="btn btn-primary copy_magnetlink" style="box-shadow: rgb(230, 122, 115) 0px 39px 0px -24px inset; background-color: rgb(228, 104, 93); border-radius: 4px; border: 1px solid rgb(255, 255, 255); display: inline-block; cursor: pointer; color: rgb(255, 255, 255); font-family: Arial; font-size: 12px; padding: 6px 15px; text-decoration: none; text-shadow: rgb(178, 62, 53) 0px 1px 0px;">复制到粘贴板</button></div></td></tr>';
 
     $("#links tbody").append(html);
 
@@ -225,17 +226,21 @@ function downTo115(url, X_userID, sign115, time115) {
 //magnet链接检测
 function check_magnets()
 {
-    var magnets = $("body").html().match(/magnet:\?xt=urn:btih:[0-9a-zA-Z]{40}/g);
+    var magnets = $("body").html().match(/[0-9a-zA-Z]{40,}/g);
+    var have = false;
     if(magnets)
     {
         $.each(magnets, function(i, n){
             var magnet = n;
-            console.log("发现magnet磁链: "+magnet);
-            //LXTo115(magnet);
-            addToboard(magnet);
-
+            if( magnet.length ==40 )
+            {
+                console.log("发现magnet磁链: magnet:?xt=urn:btih:"+magnet);
+                //LXTo115(magnet);
+                addToboard("magnet:?xt=urn:btih:"+magnet);
+                have = true;
+            }
         });
-        return true;
+        return have;
     }
     return false;
 }
@@ -269,6 +274,8 @@ function copy_link(link)
 	alert("复制成功\n\n如浏览器不支持此操作，请手动复制");
 
 }
+
+
 
 
 //===========================
