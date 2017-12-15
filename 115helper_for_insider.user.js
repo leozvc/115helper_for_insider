@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         老司机自动开车神器
 // @namespace    115helper.for.insider
-// @version      1.2.0
+// @version      1.2.0 
 // @supportURL   https://github.com/leozvc/115helper_for_insider/issues
 // @description  老司机自动开车神器, 自动抓取识别番号,磁链特征码 自动查找番号磁链 支持下载到115网盘/复制
 // @author       insider
