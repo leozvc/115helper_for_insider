@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         老司机自动开车神器
 // @namespace    115helper.for.insider
-// @version      1.2.1
+// @version      1.2.2
 // @supportURL   https://github.com/leozvc/115helper_for_insider/issues
 // @description  老司机自动开车神器, 自动抓取识别磁链特征码,支持下载到115网盘
 // @author       insider
@@ -240,7 +240,13 @@ function check_codes()
                     var responseData = responseDetails.response;
                     var magnet = responseData.match(/[0-9a-zA-Z]{40,}/);
                     console.log("番号对应magnet磁链: magnet:?xt=urn:btih:"+magnet);
-                    addToboard("magnet:?xt=urn:btih:"+ magnet, code);
+                    if(magnet != null)
+                    {
+                         addToboard("magnet:?xt=urn:btih:"+ magnet, code);
+                    }else
+                    {
+                         addToboard("该磁链暂无下载地址", code);
+                    }
 
                 }
             });
