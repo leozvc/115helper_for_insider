@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         老司机自动开车神器
 // @namespace    115helper.for.insider
-// @version      1.2.4
+// @version      1.2.5
 // @supportURL   https://github.com/leozvc/115helper_for_insider/issues
 // @description  老司机自动开车神器, 自动抓取识别磁链特征码,支持下载到115网盘
 // @author       insider
@@ -34,7 +34,7 @@ var icon = GM_getResourceURL('icon1');
 
 
   function InitModal() {
-        table_htmls = '<div id="links" style="font-size:12px; visibility: hidden; top: 150px; left: 50%; margin-left: -500px; width: 1000px; position: absolute; z-index: 101; padding: 30px 40px 34px; -moz-border-radius: 5px; -webkit-border-radius: 5px; border-radius: 5px; -moz-box-shadow: 0 0 10px rgba(0,0,0,.4); -webkit-box-shadow: 0 0 10px rgba(0,0,0,.4); -box-shadow: 0 0 10px rgba(0,0,0,.4); background-color: #FFF; "><div style="display:inline;white-space: nowrap; float:left; padding:0 20px 0 0"><img src="http://geekdream.com/hongbao.png" style="width:150px"></div><div  style="display:inline; float:left; "><table class="table"><thead><tr><th style="width:100px">番号</th><th style="word-break:break-all;word-wrap:break-all">磁链</th><th class="col-4">操作</th></tr></thead><tbody></tbody></table></div><a style=" font-size: 12px; line-height: 0.5; position: absolute; top: 8px; right: 11px; color: #333; text-shadow: 0 -1px 1px rbga(0,0,0,.6); font-weight: bold; cursor: pointer;" class="close-reveal-modal">&#215;</a></div>';
+        table_htmls = '<div id="links" style="font-size:12px; visibility: hidden; top: 150px; left: 50%; margin-left: -500px; width: 1100px; position: absolute; z-index: 101; padding: 30px 40px 34px; -moz-border-radius: 5px; -webkit-border-radius: 5px; border-radius: 5px; -moz-box-shadow: 0 0 10px rgba(0,0,0,.4); -webkit-box-shadow: 0 0 10px rgba(0,0,0,.4); -box-shadow: 0 0 10px rgba(0,0,0,.4); background-color: #FFF; "><div style="display:inline;white-space: nowrap; float:left; padding:0 20px 0 0"><img src="http://geekdream.com/hongbao.png" style="width:150px"></div><div  style="display:inline; float:left; "><table class="table"><thead><tr><th style="width:100px">番号</th><th style="word-break:break-all;word-wrap:break-all">磁链</th><th class="col-4">操作</th></tr></thead><tbody></tbody></table></div><a style=" font-size: 12px; line-height: 0.5; position: absolute; top: 8px; right: 11px; color: #333; text-shadow: 0 -1px 1px rbga(0,0,0,.6); font-weight: bold; cursor: pointer;" class="close-reveal-modal">&#215;</a></div>';
         $(document.body).append(table_htmls);
   }
 
